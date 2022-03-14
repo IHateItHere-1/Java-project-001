@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO8859-1"?>
+<report>
+	<time-stamp>
+		<date>29-05-2020</date>
+		<time>15:59:40</time>
+	</time-stamp>
+	<logo>Logo.bmp</logo>
+	<report-file>Basic Report.html</report-file>
+	<hospital>Not Violating GDPR</hospital>
+	<patient>
+		<hospital>Not Violating GDPR</hospital>
+		<name>
+			<last-name>GDPR</last-name>
+			<first-name>Says</first-name>
+			<middle-name>No</middle-name>
+		</name>
+		<patient-id>69420692</patient-id>
+		<birthday>23-05-2001</birthday>
+		<age>20</age>
+		<birthday-dtg>2001-05-22 00:00:00</birthday-dtg>
+		<sex>F</sex>
+		<pregnancy-status></pregnancy-status>
+		<lmp>10-07-2020</lmp>
+		<lmp-dtg>2020-07-10 00:00:00</lmp-dtg>
+		<menopause></menopause>
+		<length-of-cycle></length-of-cycle>
+		<ref-data></ref-data>
+		<ref-data-method></ref-data-method>
+		<psa></psa>
+		<gleason-score></gleason-score>
+		<ankle-systolic-pressure></ankle-systolic-pressure>
+		<brachial-systolic-pressure></brachial-systolic-pressure>
+		<abi></abi>
+		<patient-study>
+			<admitting-diagnosis></admitting-diagnosis>
+			<patient-size></patient-size>
+			<patient-weight></patient-weight>
+			<patient-bsa></patient-bsa>
+			<admission-id></admission-id>
+		</patient-study>
+		<study>
+			<instance-uid>1.2.208.154.1.26414.51217.35552.18135.40264.10873.48558.2256</instance-uid>
+			<date>10-07-2020</date>
+			<time>17:53:41</time>
+			<study-dtg>2020-07-24 15:53:41</study-dtg>
+			<refering-physician>Some-One</refering-physician>
+			<study-id>Magic-UID</study-id>
+			<accession-number>ACC6942069</accession-number>
+			<description></description>
+			<reading-physician></reading-physician>
+			<reqd-procedure-description></reqd-procedure-description>
+			<reqd-procedure-code-sequence></reqd-procedure-code-sequence>
+			<sched-protocol-code-sequence></sched-protocol-code-sequence>
+			<series>
+				<modality>US</modality>
+				<instance-uid></instance-uid>
+				<number></number>
+				<performing-physician>Perf1</performing-physician>
+				<operator>LK</operator>
+				<body-part-examined></body-part-examined>
+				<equipment>
+					<manufacturer>BK Medical</manufacturer>
+					<institution>
+						<name>Some Where</name>
+						<address>nope</address>
+						<department>hell</department>
+					</institution>
+					<station>Generic ultrasound</station>
+					<manufacturers-model>xxxx</manufacturers-model>
+					<device-serial-number>xxxxxxxxxxxx</device-serial-number>
+					<software-version>x.xxx.xxxxx.xx</software-version>
+				</equipment>
+			</series>
+		</study>
+	</patient>
+</report>
