@@ -1,11 +1,13 @@
 package pack;
 import java.sql.*;
+import java.util.Arrays;
+import java.util.List;
 
 import org.sqlite.SQLiteDataSource;
 
 public class DB {
-	static Connection c = null; 
-    public static void main(String[] args) {
+	private static Connection c = null; 
+    public DB() {
 
              
         try {
@@ -17,15 +19,49 @@ public class DB {
         }
         System.out.println("Opened database successfully");
         
-        
-        XML XMLobj = new XML();
-        XMLobj.GetFile("FAKESTUDY001.xml");
-        MakeTables();
-        
+        // don't mind if this goes bang
+        try 
+        {
+        	MakeTables();
+        }
+        catch(Exception e) {};
+             
+    }
+    
+    public Boolean ISXMLInDB(XMLDataType data) 
+    {
+    	return IsInDBGeneric("data", new String[] { "MRN = " + data.GetPTID() });
+    }
+    
+    public Boolean ISL3DInDB(L3DDataType data) 
+    {
+    	return IsInDBGeneric("files", new String[] { "PATH = " + data.GetL3DPATH() });
+    }
+    
+    private Boolean IsInDBGeneric(String Table, String[] params) 
+    {
+    	try {
+			Statement Stat = c.createStatement();
+			String sql = "SELECT * FROM " + Table + " WHERE ";
+			
+			for(String S : params) 
+			{
+				sql += S + " AND ";
+			}
+			
+			sql = sql.substring(0, sql.length()-5);
+			ResultSet rs = Stat.executeQuery(sql);
+			rs.last();
+			return rs.getRow() > 0;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
     }
     
     
-    private static void MakeTables() {
+    private void MakeTables() {
         Connection c = null;
         Statement Stat = null;
         

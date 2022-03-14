@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class XML {
-	 public XMLDataType GetFile (String path) 
+	 public XMLDataType GetXMLFilePTID (String path) 
 	 {
 
 	      // Instantiate the Factory
@@ -37,7 +37,6 @@ public class XML {
 				  .item(0).getLastChild().getTextContent()
 	          );
 	          
-
 	      } 
 	      catch (ParserConfigurationException | SAXException | IOException e) 
 	      {
