@@ -1,6 +1,6 @@
 package pack;
 
-public class XMLDataType {
+public class XMLDataType extends AbstractPTID{
 	private String XMLPATH;
 	private String PTID;
 	
@@ -11,8 +11,12 @@ public class XMLDataType {
 	}
 	
 	public String GetXMLPATH() 
-	{return this.XMLPATH;}
+	{
+		return this.XMLPATH;
+	}
 	
 	public String GetPTID() 
-	{return this.PTID;}
+	{
+		return this.PTID;
+	}
 }

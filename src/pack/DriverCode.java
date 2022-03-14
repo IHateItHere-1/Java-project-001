@@ -8,7 +8,7 @@ public class DriverCode {
         XML XMLobj = new XML();
         XMLobj.GetXMLFilePTID("FAKESTUDY001.xml");
         L3DDataType L3Dobj = new L3DDataType("","");
-        String str = L3Dobj.GetPTID();
+        //String str = L3Dobj.GetPTID();
 
     }
 }
