@@ -15,7 +15,7 @@ public class Sorting {
 		return RunGenericSort(data);
 	}
 	
-	// Run the sort
+	// Run the sort 
 	private <T> ArrayList<T> RunGenericSort(ArrayList<T> list)
 	{
 		return SortByPTID(removeDuplicates(list));
@@ -46,6 +46,7 @@ public class Sorting {
     	
     	Collections.sort(list, new Comparator<T>()
         {
+    		// override the comparator with a generic
             @Override
             public int compare(T o1, T o2)
             {

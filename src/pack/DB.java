@@ -8,7 +8,6 @@ import org.sqlite.SQLiteDataSource;
 public class DB {
 	private static Connection c = null; 
     public DB() {
-
              
         try {
            Class.forName("org.sqlite.JDBC");

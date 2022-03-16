@@ -6,7 +6,7 @@ abstract class AbstractPTID {
 	
 	public int GetPTIDNum() 
 	{
-		return  Integer.parseInt(GetPTID());;
+		return  Integer.parseInt(GetPTID());
 	};
 
 }
