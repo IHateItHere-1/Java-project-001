@@ -1,25 +1,62 @@
 package pack;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.concurrent.Callable;
+import java.util.function.Function;
 
 public class Sorting {
+	// Generic auto 
+	public <T> ArrayList<T> RunGenericSort(ArrayList<T> list)
+	{
+		return SortByPTID(list);
+	}
+	
+	public <T> ArrayList<T> RunGenericSortReturnXMLGenericIn(ArrayList<T> list)
+	{
+		// allows us to make a dynamic conditional and then pass it to a function
+		Function <AbstractPTID, Boolean> func = e -> e.IsXML() == true;
+		return RunGenericSortReturnXML(WhiteList(list,func));
+	}
+	
+	public <T> ArrayList<T> RunGenericSortReturnL3DGenericIn(ArrayList<T> list)
+	{
+		// allows us to make a dynamic conditional and then pass it to a function
+		Function <AbstractPTID, Boolean> func = e -> e.IsL3D() == true;
+		return RunGenericSortReturnL3D(WhiteList(list,func));
+	}
+	// Generic auto 
+		
+	
+	public <T> ArrayList<T> RunGenericSortReturnXML(ArrayList<T> list)
+	{
+		return SortByPTID(list);
+	}
+	
+	public <T> ArrayList<T> RunGenericSortReturnL3D(ArrayList<T> list)
+	{
+		return SortByPTID(list);
+	}
+	
 	public ArrayList<XMLDataType> SortXML(ArrayList<XMLDataType> data)
 	{
-		return RunGenericSort(data);
+		return RunGenericSortRemoveDuplicates(data);
 	}
 	
 	public ArrayList<L3DDataType> SortL3D(ArrayList<L3DDataType> data)
 	{
-		return RunGenericSort(data);
+		return RunGenericSortRemoveDuplicates(data);
 	}
 	
 	// Run the sort 
-	private <T> ArrayList<T> RunGenericSort(ArrayList<T> list)
+	private <T> ArrayList<T> RunGenericSortRemoveDuplicates(ArrayList<T> list)
 	{
 		return SortByPTID(removeDuplicates(list));
 	}
+	
+	
 	
 	// gets rid of duplicated data
     private <T> ArrayList<T> removeDuplicates(ArrayList<T> list)
@@ -37,6 +74,29 @@ public class Sorting {
         }
   
         // return the new list
+        return newList;
+    }
+    
+    interface Callable {
+        public void call(int param);
+    }
+    
+    
+    // returns an ArrayList based on a dynamic conditional 
+    private <T> ArrayList<T> WhiteList(ArrayList<T> list, Function <AbstractPTID,Boolean> func)
+    {
+        ArrayList<T> newList = new ArrayList<T>();
+        
+        // Iterate over the array
+        for (T element : list) {
+  
+        	// run the check
+            if (func.apply((AbstractPTID) element))
+            {            	            	
+                newList.add(element);
+            }
+        }
+        
         return newList;
     }
     

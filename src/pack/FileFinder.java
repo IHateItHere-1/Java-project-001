@@ -8,16 +8,16 @@ public class FileFinder {
 	
 	private String dir;
 	private String[] fileList;
+	private ArrayList<CustomFile> Flist;
 	
-	public FileFinder (String str)
+	public FileFinder(String str)
 	{
-		RefresData(str) ;
+		RefresData(str);
 	}
 	
 	public void RefresData() 
 	{
-		File file = new File(dir);
-		fileList = file.list();
+		RefresData(dir);
 	}
 	
 	public void RefresData(String str) 
@@ -25,17 +25,28 @@ public class FileFinder {
 		dir = str;
 		File file = new File(str);
 		fileList = file.list();
-		listf(str);
+		Flist = listf(str);
 	}
 	
-	public String[] fileList() 
+	public ArrayList<CustomFile> fileList() 
 	{
-		return fileList;
+		Sorting sort = new Sorting();
+		var t = sort.RunGenericSort(Flist);
+	    for(var file : t) 
+	    {
+	    	System.out.println(file.GetPTID() + " | " + file.FileExtension());    
+	    }
+	    return t;
 	}
 	
-	public String[] fileListXML() 
+	public void fileListXML() 
 	{
-		return fileList;
+		Sorting sort = new Sorting();
+		var t = sort.RunGenericSortReturnXMLGenericIn(Flist);
+	    for(var file : t) 
+	    {
+	    	System.out.println(file.GetPTID() + " | " + file.FileExtension());         
+	    }
 	}
 	
 	public String[] fileListL3D() 
@@ -45,21 +56,21 @@ public class FileFinder {
 	
 	public void Print() 
 	{
-	     for(String file : fileList) {
-	           System.out.println(file);
-	         
-	       }
+	     for(String file : fileList) 
+	     {
+	    	 System.out.println(file);	         
+         }
 	}
 	
-   public static List<CustomFile> listf(String directoryName) {
+   public ArrayList<CustomFile> listf(String directoryName) {
         File directory = new File(directoryName);
 
-        List<CustomFile> ret = new ArrayList<CustomFile>();
+        ArrayList<CustomFile> ret = new ArrayList<CustomFile>();
 
         // get all the files from a dir
         for (File file : directory.listFiles()) {
             if (file.isFile() && file.getAbsolutePath().contains(".")) {
-            	CustomFile CF = new CustomFile(file)
+            	CustomFile CF = new CustomFile(file);
             	
             	if(CF.IsXMLOrL3d()) 
             	{
@@ -71,45 +82,9 @@ public class FileFinder {
         }
         return ret;
     }
+
    
-   public class CustomFile
-   {
-	    private File file;
-	    
-	    public CustomFile(File _file)
-	    {
-	 	    file = _file;
-	    }	   
-	   
-	   	public Boolean IsExtension(String str) 
-	   	{ 
-	   		return str.toLowerCase().contains(FullPath().substring
-			(
-				FullPath().lastIndexOf('.') + 1).toLowerCase()
-			);
-	   	}
-	   	
-	   	public String FullPath() 
-	   	{ 
-	   		return file.getAbsolutePath();
-	   	}
-	   	
-	   	public Boolean IsL3D() 
-	   	{ 
-	   		return (FullPath().substring(
-	   				FullPath().lastIndexOf('.') + 1)).toLowerCase().contains("l3d");
-	   	}
-	   	public Boolean IsXML() 
-	   	{ 
-	   		return (FullPath().substring(
-	   				FullPath().lastIndexOf('.') + 1)).toLowerCase().contains("xml");
-	   	}
-	   	public Boolean IsXMLOrL3d() 
-	   	{ 
-	   		return  (IsL3D() || IsXML());
-	   	}
-	   
-   }
-	
-	
+   
 }
+	
+	

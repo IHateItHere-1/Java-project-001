@@ -14,8 +14,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class XML {
-	 public XMLDataType GetXMLFilePTID (String path) 
+public class XML {	 
+	 public static String GetXMLFilePTIDString (String path) 
 	 {
 
 	      // Instantiate the Factory
@@ -30,12 +30,8 @@ public class XML {
 	          DocumentBuilder db = dbf.newDocumentBuilder();
 	          Document doc = db.parse(new File(path));	       
 	          doc.getDocumentElement().normalize();	          
-	          return new XMLDataType
-    		  (
-				  path,
-				  doc.getElementsByTagName("patient-id")
-				  .item(0).getLastChild().getTextContent()
-	          );
+	          return doc.getElementsByTagName("patient-id")
+				  .item(0).getLastChild().getTextContent();
 	          
 	      } 
 	      catch (ParserConfigurationException | SAXException | IOException e) 

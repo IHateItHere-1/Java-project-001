@@ -8,5 +8,8 @@ abstract class AbstractPTID {
 	{
 		return  Integer.parseInt(GetPTID());
 	};
+	
+	public abstract Boolean IsL3D();
+	public abstract Boolean IsXML();
 
 }
