@@ -15,6 +15,11 @@ public class XMLDataType extends AbstractPTID{
 		return this.CF.FullPath();
 	}
 	
+	public String GetXMLName() 
+	{
+		return this.CF.FileName();
+	}
+	
 	public String GetPTID() 
 	{
 		return this.PTID;
@@ -29,4 +34,8 @@ public class XMLDataType extends AbstractPTID{
    		return CF.IsExtension("xml");
    	}
 	
+   	public XMLDBDATA GetXmlDBData() 
+   	{
+   		return new XMLDBDATA(this);
+   	}
 }

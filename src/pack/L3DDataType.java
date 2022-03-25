@@ -41,4 +41,22 @@ public class L3DDataType extends AbstractPTID{
 	{
 		return L3DName.substring(0,L3DName.length()-25);
 	}
+	
+	public String GetDate() 
+	{
+		String str = GetL3DName().substring(GetL3DName().length()-24,GetL3DName().length()-16);
+		String ret = str.substring(0,4) + "-";
+		 ret += str.substring(4,6) + "-";
+		 ret += str.substring(6,8);
+		return ret;
+	}
+	
+	public String GetTime() 
+	{
+		String str = GetL3DName().substring(GetL3DName().length()-15,GetL3DName().length()-9);
+		String ret = str.substring(0,2) + "-";
+		 ret += str.substring(2,4) + "-";
+		 ret += str.substring(4,6);
+		return ret;
+	}
 }

@@ -41,5 +41,32 @@ public class XML {
 	      return null;
 
 	  }
+	 
+	 public static String GetXMLFileDataDynamic(String path, String Node) 
+	 {
+
+	      // Instantiate the Factory
+	      DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+	      try 
+	      {	    	  
+	    	  // avoid XXE stupidity (CVE-2021-38555)
+	          dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+
+	          // parse XML file
+	          DocumentBuilder db = dbf.newDocumentBuilder();
+	          Document doc = db.parse(new File(path));	       
+	          doc.getDocumentElement().normalize();	          
+	          return doc.getElementsByTagName(Node)
+				  .item(0).getLastChild().getTextContent();
+	          
+	      } 
+	      catch (ParserConfigurationException | SAXException | IOException e) 
+	      {
+	          e.printStackTrace();
+	      }
+	      return null;
+
+	  }
 		 
 }
