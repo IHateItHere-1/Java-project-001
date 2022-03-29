@@ -30,3 +30,9 @@ this program should be able to be searched by PTID / date of exam / time / date
 and return details of images for any study that matches the search criteria. 
 
 the algorithm section will take the form of relating the xmls  and L3Ds as efficiently as possible.
+
+
+
+if more time -> Manage time better -> add the GUI 
+
+optional -> debug output for relations made | fast sorting algo for building relations | R/W as little as possible to DB file 
